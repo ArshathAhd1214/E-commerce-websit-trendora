@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trendora</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-white text-gray-800">
+<!-- Chat Button -->
+<button id="chatBtn" class="fixed bottom-6 right-6 bg-black text-white p-4 rounded-full shadow-lg hover:bg-gray-800 transition">
+  💬
+</button>
+
+<!-- Chat Popup -->
+<!-- Chat Popup -->
+<div id="chatPopup" class="fixed bottom-20 right-6 bg-white w-72 shadow-xl rounded-lg p-4 border border-gray-200 hidden flex flex-col">
+  <div class="flex justify-between items-center mb-2">
+    <h3 class="text-lg font-bold">Chat Support</h3>
+    <button id="closeChat" class="text-gray-500 hover:text-red-500 text-xl">&times;</button>
+  </div>
+  <div id="chatMessages" class="h-40 overflow-y-auto text-sm text-gray-700 mb-2 p-2 border rounded bg-gray-50 flex-grow">
+    <p><strong>Support:</strong> Hello! How can I assist you with your shopping?</p>
+  </div>
+  
+  <!-- Input with send icon inside -->
+  <div class="relative">
+    <input id="chatInput" type="text" placeholder="Type your message..." class="w-full pr-10 px-3 py-2 border rounded text-sm focus:outline-none focus:ring" />
+    <button id="sendBtn" class="absolute right-1 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-800 focus:outline-none" aria-label="Send">
+      <!-- SVG Send Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-9.197-5.59a.75.75 0 00-1.095.835l1.51 6.061a.75.75 0 00.557.557l6.06 1.51a.75.75 0 00.835-1.095l-5.59-9.197z" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+  <!-- Navbar -->
+  <header class="bg-black text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo.png" alt="Trendora Logo" class="h-16 w-auto">
+          <span class="text-2xl font-bold tracking-wide">Trendora</span>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="#" class="hover:text-red-400 transition">Home</a>
+          <a href="shop.html" class="hover:text-red-400 transition">Shop</a>
+          <a href="#" class="hover:text-red-400 transition">About</a>
+          <a href="#" class="hover:text-red-400 transition">Contact</a>
+        </nav>
+
+        <!-- Sign In Button -->
+        <a href="signin.html" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md font-medium transition flex items-center space-x-2">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>Sign In</span>
+        </a>
+
+        <!-- Hamburger Menu (Mobile) -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="focus:outline-none" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <nav class="flex flex-col space-y-2">
+        <a href="#" class="hover:text-red-400 transition">Home</a>
+        <a href="#" class="hover:text-red-400 transition">Shop</a>
+        <a href="#" class="hover:text-red-400 transition">About</a>
+        <a href="#" class="hover:text-red-400 transition">Contact</a>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium transition w-max mt-2">
+          Sign In
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen overflow-hidden">
+  <!-- Video background -->
+  <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+    <source src="assets/WhatsApp Video 2025-06-23 at 20.19.57_ce622a36.mp4" type="video/mp4" />
+    <!-- Fallback for unsupported browsers -->
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+  <!-- Centered content -->
+  <div class="relative z-20 flex flex-col justify-center items-center h-full text-center text-white px-4 pt-16 md:pt- lg:pt-32">
+  <h1 class="text-4xl md:text-6xl font-bold mb-4">Unleash Your Style</h1>
+  <p class="text-lg md:text-xl mb-8">Step into the world of fashion with Trendora</p>
+  <a href="shop.html" class="bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-3 rounded-md transition">
+    Shop Now
+  </a>
+</div>
+
+
+</section>
+
+
+  <!-- Featured Products -->
+  <section id="featured" class="py-20 bg-gradient-to-b from-white via-gray-100 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-14 tracking-tight">🔥 Featured Products</h2>
+
+      <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+        <!-- Product Card 1 -->
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <img src="assets/product1.jpg" alt="Stylish Jacket" class="w-full h-64 object-cover rounded-t-2xl">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Stylish Jacket</h3>
+            <p class="text-red-500 font-bold text-lg mb-4">$49.99</p>
+            <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition duration-300">
+             <a href="add-to-cart.html" class="text-white px-4 py-2 rounded hover:bg-red-600">Add to Cart</a>
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <img src="assets/product2.jpg" alt="Elegant Dress" class="w-full h-64 object-cover rounded-t-2xl">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Elegant Dress</h3>
+            <p class="text-red-500 font-bold text-lg mb-4">$59.99</p>
+            <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition duration-300">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <img src="assets/product3.jpg" alt="Casual Sneakers" class="w-full h-64 object-cover rounded-t-2xl">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Casual Sneakers</h3>
+            <p class="text-red-500 font-bold text-lg mb-4">$69.99</p>
+            <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition duration-300">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <img src="assets/product4.jpg" alt="Denim Jeans" class="w-full h-64 object-cover rounded-t-2xl">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Denim Jeans</h3>
+            <p class="text-red-500 font-bold text-lg mb-4">$39.99</p>
+            <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-medium transition duration-300">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Category -->
+  <section id="categories" class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Shop by Category</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+
+        <!-- Men -->
+        <a href="men.html" class="group bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-5xl text-red-500 group-hover:text-red-600 mb-4 transition">
+            <i class="fas fa-male"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-700 dark:text-white">Men</h3>
+        </a>
+
+        <!-- Women -->
+        <a href="women.html" class="group bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-5xl text-red-500 group-hover:text-red-600 mb-4 transition">
+            <i class="fas fa-female"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-700 dark:text-white">Women</h3>
+        </a>
+
+        <!-- Kids -->
+        <a href="kids.html" class="group bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-5xl text-red-500 group-hover:text-red-600 mb-4 transition">
+            <i class="fas fa-child"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-700 dark:text-white">Kids</h3>
+        </a>
+
+        <!-- Accessories -->
+        <a href="accessories.html" class="group bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-5xl text-red-500 group-hover:text-red-600 mb-4 transition">
+            <i class="fas fa-hat-cowboy"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-700 dark:text-white">Accessories</h3>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why-choose-us" class="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Why Choose Us</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+        <!-- Free Shipping -->
+        <div class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-4xl text-red-500 group-hover:text-red-600 mb-4">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-700 dark:text-white">Free Shipping</h3>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">On all orders above $50</p>
+        </div>
+
+        <!-- Premium Quality -->
+        <div class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-4xl text-red-500 group-hover:text-red-600 mb-4">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-700 dark:text-white">Premium Quality</h3>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">Top-notch materials & design</p>
+        </div>
+
+        <!-- Easy Returns -->
+        <div class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-4xl text-red-500 group-hover:text-red-600 mb-4">
+            <i class="fas fa-undo-alt"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-700 dark:text-white">Easy Returns</h3>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">Hassle-free 7-day return policy</p>
+        </div>
+
+        <!-- 24/7 Support -->
+        <div class="group bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-4xl text-red-500 group-hover:text-red-600 mb-4">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-700 dark:text-white">24/7 Support</h3>
+          <p class="text-gray-600 dark:text-gray-300 mt-2">Always here to help you</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">What Our Customers Say</h2>
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <div class="flex items-center mb-4">
+            <img src="assets/customer1.jpg" alt="Customer 1" class="w-14 h-14 rounded-full mr-4 object-cover">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Jessica Brown</h3>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic">"I absolutely love the quality and style of the clothes. Trendora never disappoints!"</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <div class="flex items-center mb-4">
+            <img src="assets/customer2.jpg" alt="Customer 2" class="w-14 h-14 rounded-full mr-4 object-cover">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Michael Lee</h3>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic">"Fast delivery and amazing customer service. Highly recommend Trendora!"</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-2xl transition-transform duration-300 transform hover:-translate-y-1">
+          <div class="flex items-center mb-4">
+            <img src="assets/customer3.jpg" alt="Customer 3" class="w-14 h-14 rounded-full mr-4 object-cover">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Sara Wilson</h3>
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 italic">"Great variety and quality. I always find something stylish at Trendora."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter" class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center text-gray-900">
+      <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+      <p class="mb-8">Get the latest updates, promotions, and style tips delivered straight to your inbox.</p>
+
+      <form class="flex flex-col sm:flex-row justify-center items-center gap-4" onsubmit="event.preventDefault(); alert('Subscribed!');">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          class="w-full sm:flex-1 px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-600"
+        />
+        <button
+          type="submit"
+          class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-md hover:bg-gray-800 transition"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+
+      <!-- Image -->
+      <div class="md:w-1/2">
+        <img src="assets/about.jpeg" alt="About Trendora" class="rounded-lg shadow-lg w-full object-cover" />
+      </div>
+
+      <!-- Text Content -->
+      <div class="md:w-1/2 text-gray-800 dark:text-gray-200">
+        <h2 class="text-4xl font-bold mb-6">About Trendora</h2>
+        <p class="mb-4 text-lg leading-relaxed">
+          At Trendora, we believe fashion is a way to express yourself. We curate the latest styles with quality and comfort in mind, offering clothing and accessories that inspire confidence and individuality.
+        </p>
+        <p class="mb-4 text-lg leading-relaxed">
+          From casual wear to elegant pieces, our collection is designed to fit your lifestyle. We are committed to providing excellent customer service and sustainable fashion choices.
+        </p>
+        <a href="shop.html" class="inline-block mt-6 px-6 py-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition font-semibold">
+          Shop Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 dark:bg-gray-900 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start space-y-8 md:space-y-0">
+
+      <!-- Social Media -->
+      <div class="flex space-x-6">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-white transition">
+          <i class="fab fa-facebook-f text-2xl"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter" class="hover:text-white transition">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-white transition">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-white transition">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
+      </div>
+
+      <!-- Terms & Conditions -->
+      <div>
+        <a href="#terms" class="hover:text-white transition font-medium">Terms & Conditions</a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="text-center md:text-right space-y-1">
+        <p>Email: <a href="mailto:support@trendora.com" class="hover:text-white transition">support@trendora.com</a></p>
+        <p>Phone: <a href="tel:+94 721443960" class="hover:text-white transition">+94 721443960</a></p>
+        <p>© 2025 Trendora. All rights reserved.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JS for mobile menu toggle -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  const chatBtn = document.getElementById('chatBtn');
+const chatPopup = document.getElementById('chatPopup');
+const closeChat = document.getElementById('closeChat');
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+const sendBtn = document.getElementById('sendBtn');
+
+// Open/Close chat popup
+chatBtn.addEventListener('click', () => {
+  chatPopup.classList.toggle('hidden');
+  chatInput.focus();
+});
+closeChat.addEventListener('click', () => {
+  chatPopup.classList.add('hidden');
+});
+
+// Same Q&A data and getAnswer function as before...
+
+function sendMessage() {
+  const userMsg = chatInput.value.trim();
+  if (userMsg === '') return;
+  appendMessage('You', userMsg);
+  chatInput.value = '';
+  setTimeout(() => {
+    const answer = getAnswer(userMsg);
+    appendMessage('Support', answer);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 500);
+}
+
+// Send on Enter key
+chatInput.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendMessage();
+  }
+});
+
+// Send on button click
+sendBtn.addEventListener('click', sendMessage);
+
+function appendMessage(sender, message) {
+  const p = document.createElement('p');
+  p.innerHTML = `<strong>${sender}:</strong> ${message}`;
+  chatMessages.appendChild(p);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+  
+  </script>
+
+</body>
+</html>
